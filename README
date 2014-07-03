@@ -1,1 +1,17 @@
 Run config.sh to auto config my linux.
+# Use Numpy and Scipy
+import numpy as np
+vec1 = np.random.uniform(size = 10, low = 10, high = 100)
+vec2 = np.random.uniform(size = 10, low = 10, high = 100)
+
+import scipy.spatial.distance as ssd
+print ssd.chebyshev(vec1, vec2)
+print ssd.euclidean(vec1, vec2)
+print ssd.minkowski(vec1, vec2, 1)
+
+from sklearn.neighbors import NearestNeighbors
+samples = np.array([np.random.uniform(10, 100, 10) for i in range(50)])
+neigh = NearestNeighbors(n_neighbors=5)
+neigh.fit(samples)
+dist, ind = neigh.kneighbors(samples[0])
+print dist, ind
